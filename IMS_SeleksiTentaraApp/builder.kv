@@ -1,0 +1,248 @@
+<WelcomeScreen>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/welcome.jpg'
+    MDTextButton:
+        text: 'MULAI'
+        font_name: "assets/Montserrat-Bold.ttf"
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.primary_color
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.164}
+        on_press: root.login_button()
+    MDTextButton:
+        font_name: "assets/Montserrat-Medium.ttf"
+        text: 'K E L U A R'
+        font_style: "Caption"
+        on_press: root.tutup()
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.06}
+
+    
+<LoginScreen>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/login.jpg'
+    #MDLabel:
+    #    text: 'IMS/BMI'
+    #    pos_hint : {'center_y' : 0.9}
+    #    font_style: 'H2'
+    #    halign: "center"
+    #    font_name: "KIVYMD/wisata app/Montserrat-Bold.ttf"
+    #MDLabel:
+    #    text: 'Halaman Login'
+    #    pos_hint : {'center_y' : 0.8}
+    #    font_style: 'Caption'
+    #    halign: "center"
+    #    font_name: "KIVYMD/wisata app/Montserrat-Bold.ttf"
+    MDTextField:
+        id: uname
+        mode: "rectangle"
+        hint_text: "Nama"
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.6}
+        size_hint_x:None
+        width:200
+        max_text_length: 15
+        helper_text: "masukkan nama"
+        helper_text_mode: "on_focus"
+    MDTextField:
+        id: passw
+        password: True
+        mode: "rectangle"
+        hint_text: "Kata sandi"
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.45}
+        size_hint_x:None
+        width:200
+        max_text_length: 3
+        helper_text: "masukkan kata sandi"
+        helper_text_mode: "on_focus"
+    MDTextButton:
+        text: 'MASUK'
+        on_press: root.login_button_action()
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.primary_color
+        font_name: "assets/Montserrat-Bold.ttf"
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.3}
+        
+    MDTextButton:
+        font_name: "assets/Montserrat-Medium.ttf"
+        text: 'K E L U A R'
+        font_style: "Caption"
+        on_press: root.tutup()
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.06}
+    MDFloatingActionButton:
+        icon: "home"
+        md_bg_color: app.theme_cls.primary_color
+        x: root.width - self.width - dp(10)
+        y: dp(10)
+        on_press: root.manager.current = 'welcome'
+<DaftarScreen>:
+    MDTextField:
+        id: daftar_uname
+        hint_text: "Username"
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.6}
+        size_hint_x:None
+        width:200
+        max_text_length: 15
+        helper_text: "masukkan nama"
+        helper_text_mode: "persistent"
+    MDTextField:
+        id: daftar_passw
+        password: True
+        hint_text: "Password"
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.5}
+        size_hint_x:None
+        width:200
+        max_text_length: 15
+        helper_text: "masukkan password"
+        helper_text_mode: "persistent"
+    MDRectangleFlatButton:
+        text: 'Daftar'
+        on_press: root.daftar_button_action()
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.4}
+
+<MainMenu2>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/info_1.jpg'
+    
+    MDTextButton:
+        font_name: "assets/Montserrat-Medium.ttf"
+        text: 'Selanjutnya'
+        font_style: "H5"
+        on_press: root.BMI_button()
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.15}
+
+    MDTextButton:
+        font_name: "assets/Montserrat-Medium.ttf"
+        text: 'K E L U A R'
+        font_style: "Caption"
+        on_press: root.tutup()
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.06}
+
+    MDFloatingActionButton:
+        icon: "account-arrow-left"
+        md_bg_color: app.theme_cls.primary_color
+        x: root.width - self.width - dp(10)
+        y: dp(10)
+        on_press: root.manager.current = 'login'
+        
+<MainMenu>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/info_2.jpg'
+    
+    MDTextButton:
+        font_name: "assets/Montserrat-Medium.ttf"
+        text: 'MULAI IMS'
+        font_style: "H5"
+        on_press: root.BMI_button()
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.15}
+
+    MDTextButton:
+        font_name: "assets/Montserrat-Medium.ttf"
+        text: 'K E L U A R'
+        font_style: "Caption"
+        on_press: root.tutup()
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.06}
+
+    MDFloatingActionButton:
+        icon: "account-arrow-left"
+        md_bg_color: app.theme_cls.primary_color
+        x: root.width - self.width - dp(10)
+        y: dp(10)
+        on_press: root.manager.current = 'login'
+        
+<TaskScreen>:
+    ScrollView:
+        MDList:
+            id: tasklist
+    MDFloatingActionButton:
+        icon: "plus"
+        md_bg_color: app.theme_cls.primary_color
+        x: root.width - self.width - dp(10)
+        y: dp(10)
+        on_press: root.manager.current = 'login' 
+
+<LayarBMI>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'assets/main.jpg'
+    #MDLabel:
+    #    text: 'Body Mass Index'
+    #    pos_hint : {'center_y' : 0.9}
+    #    font_style: 'H5'
+    #    halign: "center"
+    #    font_name: "KIVYMD/wisata app/Montserrat-Bold.ttf"
+    MDLabel:
+        text: 'silahkan masukkan tinggi dan berat badan pada kolom dibawah'
+        pos_hint : {'center_y' : 0.7}
+        font_style: 'Caption'
+        halign: "center"
+        font_name: "assets/Montserrat-Bold.ttf"
+    MDFloatingActionButton:
+        icon: "arrow-left"
+        md_bg_color: app.theme_cls.primary_color
+        x: root.width - self.width - dp(10)
+        y: dp(10)
+        on_press: root.manager.current = 'mainmenu' 
+    MDTextField:
+        id: tinggi
+        hint_text: "Tinggi (cm)*"
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.6}
+        size_hint_x:None
+        width:250
+        max_text_length: 3
+        helper_text: "isi dengan angka minimal 3 digit"
+        helper_text_mode: "on_focus"
+    MDTextField:
+        id: berat
+        hint_text: "Berat (kg)*"
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.5}
+        size_hint_x:None
+        width:250
+        max_text_length: 3
+        helper_text: "isi dengan angka minimal 2 digit"
+        helper_text_mode: "on_focus"
+    MDLabel:
+        id: caption
+        text : ''
+        halign : 'center'
+        pos_hint : {'center_x' : 0.45, 'center_y': 0.41}
+        theme_text_color : 'Primary'
+        font_style : 'Caption'
+    MDLabel:
+        id: result
+        text : ''
+        halign : 'center'
+        pos_hint : {'center_x' : 0.55,'center_y': 0.41}
+        theme_text_color : 'Primary'
+        font_style : 'H5'
+    MDLabel:
+        id: capcap
+        text : ''
+        halign : 'center'
+        pos_hint : {'center_y': 0.28}
+        theme_text_color : 'Primary'
+        font_style : 'Caption'
+    MDTextButton:
+        text: 'HITUNG BMI'
+        font_name: "assets/Montserrat-Bold.ttf"
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.164}
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.primary_color
+        on_press: root.press_hitung()
+    MDTextButton:
+        font_name: "assets/Montserrat-Medium.ttf"
+        text: 'K E L U A R'
+        font_style: "Caption"
+        on_press: root.tutup()
+        pos_hint : {'center_x' : 0.5, 'center_y' : 0.06}
